@@ -16,5 +16,5 @@ go get github.com/CrystallizeAPI/go-ecs-deploy
 ## Usage
 
 ```sh
-go-ecs-deploy -cluster <cluster-name> -service <service-name>
+go-ecs-deploy -cluster <cluster-name> -service <service-name> -region <aws-region>
 ```
