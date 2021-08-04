@@ -1,4 +1,4 @@
-module github.com/crystallizeapi/go-ecs-deploy
+module github.com/CrystallizeAPI/go-ecs-deploy
 
 go 1.16
 
