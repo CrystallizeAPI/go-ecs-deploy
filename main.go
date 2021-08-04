@@ -38,11 +38,17 @@ func main() {
 	sess := session.Must(session.NewSession())
 	creds := stscreds.NewCredentials(sess, roleArn)
 
-	ecs.New(sess, &aws.Config{
+	_, err := ecs.New(sess, &aws.Config{
 		Credentials: creds,
 	}).UpdateService(&ecs.UpdateServiceInput{
 		Cluster:            clusterName,
 		Service:            serviceName,
 		ForceNewDeployment: &forceNewDeployment,
 	})
+
+	if err != nil {
+		fail(fmt.Sprintf("deployment for service %s failed on cluster %s: %s", *serviceName, *clusterName, err.Error()))
+	}
+
+	fmt.Printf("deployment for service %s on cluster %s was successful", *serviceName, *clusterName)
 }
